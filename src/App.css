@@ -1,0 +1,236 @@
+@font-face {
+  font-family: "redhat";
+  src: url("../public/fonts/static/RedHatText-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "redhat-regular";
+  src: url("../public/fonts/static/RedHatText-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "redhat-bold";
+  src: url("../public/fonts/static/RedHatText-Bold.ttf") format("truetype");
+}
+
+:root {
+  --red-filter: brightness(0) saturate(100%) sepia(100%) hue-rotate(-30deg)
+    brightness(1.2);
+  --red: hsl(14, 86%, 42%);
+  --green: hsl(159, 69%, 38%);
+
+  --rose-50: hsl(20, 50%, 98%);
+  --rose-100: hsl(13, 31%, 94%);
+  --rose-300: hsl(14, 25%, 72%);
+  --rose-400: hsl(7, 20%, 60%);
+  --rose-500: hsl(12, 20%, 44%);
+  --rose-900: hsl(14, 65%, 9%);
+}
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "redhat-regular";
+}
+
+body {
+  background-color: var(--rose-100);
+}
+
+.titlePage {
+  margin-bottom: 36px;
+  font-family: "redhat-bold";
+}
+
+.main {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  margin-top: 36px;
+}
+
+.informations {
+  margin: 36px 0;
+  line-height: 24px;
+}
+
+.productName {
+  font-size: 16px;
+}
+
+.informations .price {
+  color: var(--red);
+}
+
+.informations .category {
+  color: var(--rose-300);
+}
+
+.container-dessert img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -24px auto;
+}
+.actions button {
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 1px solid var(--rose-400);
+  padding: 10px 18px;
+}
+
+.actions button img {
+  margin-right: 12px;
+}
+
+.incdec {
+  width: 155px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--red);
+  border-radius: 20px;
+  padding: 10px 10px;
+  color: var(--rose-100);
+}
+.button {
+  width: 20px;
+  border-radius: 50%;
+  color: var(--rose-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid;
+}
+
+.button:hover {
+  background-color: var(--rose-50);
+  color: var(--red);
+}
+
+.button:hover img {
+  filter: var(--red-filter);
+}
+
+.addCart:hover {
+  border: 1px solid var(--red);
+}
+.border {
+  border: 2px solid var(--red);
+}
+
+#cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--rose-50);
+  border-radius: 10px;
+  padding: 24px 14px;
+  min-height: 220px;
+  width: 100%;
+}
+
+#cart .cartTitle,
+#cart .cartTitle span {
+  color: var(--red);
+  font-size: 22px;
+  font-family: "redhat-bold";
+}
+
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-empty p {
+  font-size: 12px;
+  font-family: "redhat-bold";
+  color: var(--rose-400);
+  font-weight: 500;
+}
+
+.remove {
+  border-radius: 50%;
+  border: 1px solid;
+  color: var(--rose-500);
+  width: 20px;
+  cursor: pointer;
+}
+.remove:hover {
+  color: var(--rose-900);
+  background-color: var(--rose-900);
+}
+
+.productCart {
+  border-bottom: 1px solid var(--rose-100);
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productCart .item-quantity {
+  color: var(--red);
+  font-family: "redhat-bold";
+  margin-right: 16px;
+}
+.productCart .productName {
+  margin-bottom: 16px;
+}
+.productCart .unitValue {
+  color: var(--rose-400);
+  font-family: "redhat-regular";
+}
+.productCart .totalValue {
+  font-family: "redhat-bold";
+  color: var(--rose-500);
+  margin-left: 16px;
+}
+.cart-total {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-total h3 {
+  font-family: "redhat-bold";
+  color: var(--rose-900);
+  font-size: 36px;
+}
+
+@media (min-width: 768px) {
+  .main {
+    display: grid;
+    grid-template-areas: "main cart";
+    grid-template-columns: 1fr 250px;
+  }
+  .container-main {
+    grid-area: main;
+  }
+  .disserts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+  }
+
+  #cart {
+    grid-area: cart;
+  }
+
+  .container-dessert {
+    width: 280px;
+  }
+}
