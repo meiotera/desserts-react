@@ -50,6 +50,9 @@ body {
   align-items: start;
   flex-direction: column;
   margin-top: 36px;
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .informations {
@@ -211,11 +214,91 @@ body {
   font-size: 36px;
 }
 
+.confirm-order {
+  border-radius: 23px;
+  border: none;
+  background-color: var(--red);
+  color: var(--rose-100);
+  font-family: "redhat-bold";
+  padding: 14px;
+  font-size: 16px;
+  margin-top: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.confirm-order:hover {
+  background-color: rgb(128, 26, 26);
+}
+
+.confirmed-order {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #c7c5c59d;
+}
+
+.order {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  width: 100%;
+  background-color: white;
+  padding: 16px;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.order h2 {
+  font-family: "redhat-bold";
+  font-size: 42px;
+}
+
+.order p {
+  font-family: "redhat-regular";
+  color: var(--rose-400);
+  margin-bottom: 36px;
+}
+
+.order .container-order {
+  padding: 16px;
+  background-color: var(--rose-50);
+}
+
+.item-order {
+  display: flex;
+}
+
+.image-order {
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 16px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
 @media (min-width: 768px) {
   .main {
     display: grid;
     grid-template-areas: "main cart";
-    grid-template-columns: 1fr 250px;
+    grid-template-columns: 3fr 1.2fr;
   }
   .container-main {
     grid-area: main;
@@ -232,5 +315,19 @@ body {
 
   .container-dessert {
     width: 280px;
+  }
+
+  .order {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+
+    background-color: white;
+    padding: 36px;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
   }
 }

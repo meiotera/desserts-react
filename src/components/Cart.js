@@ -1,11 +1,12 @@
 import React from "react";
 
-export default function Cart({ onItem, onRemoveItemCart }) {
+export default function Cart({ onItem, onRemoveItemCart, onFinalizado }) {
   let totalquantity = 0;
   const total = onItem.reduce(
     (acc, item) => acc + item.quantity * item.price,
     0
   );
+
   onItem.map((item) => {
     return (totalquantity += item.quantity);
   });
@@ -42,10 +43,15 @@ export default function Cart({ onItem, onRemoveItemCart }) {
       )}
 
       {onItem.length > 0 ? (
-        <div className="cart-total">
-          <span>Order Total </span>
-          <h3>${total.toFixed(2)}</h3>
-        </div>
+        <React.Fragment>
+          <div className="cart-total">
+            <span>Order Total </span>
+            <h3>${total.toFixed(2)}</h3>
+          </div>
+          <button className="confirm-order" onClick={() => onFinalizado(true)}>
+            Confirm Order
+          </button>
+        </React.Fragment>
       ) : (
         ""
       )}

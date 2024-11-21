@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import TitlePage from "./TitlePage";
 import DessertList from "./Dessert";
 import Cart from "./Cart";
+import FinishOrder from "./FinishOrder";
 
 export default function Main() {
   const [addItemCart, setAddItemCart] = useState([]);
+  const [finalizado, setFinalizado] = useState(false);
 
   function handleAddItemCart(item) {
     setAddItemCart((prevItem) => {
@@ -23,6 +25,11 @@ export default function Main() {
         return [...prevItem, { ...item, quantity: 1 }];
       }
     });
+  }
+
+  function handleNewOrder() {
+    setAddItemCart([]);
+    setFinalizado(false);
   }
 
   function handleRemoveItemCart(item) {
@@ -86,7 +93,12 @@ export default function Main() {
           );
           return foundItem ? foundItem.quantity : 0;
         }}
+        onFinalizado={setFinalizado}
       />
+
+      {finalizado && (
+        <FinishOrder onConfirmOrder={addItemCart} onNewOrder={handleNewOrder} />
+      )}
     </main>
   );
 }
